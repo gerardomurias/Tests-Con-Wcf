@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFTestSolution.ConsoleHost
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFTestSolution.WebIISHost", "WCFTestSolution.WebIISHost\WCFTestSolution.WebIISHost.csproj", "{CDDDFEE5-ED61-4097-ADA0-EBCFF6FF9165}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{96002619-4C0B-4591-B779-2196DCDCEB06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFTestSolution.WPFClient", "WCFTestSolution.WPFClient\WCFTestSolution.WPFClient.csproj", "{2245A98F-184D-432A-BF68-52986F05A368}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,8 +43,15 @@ Global
 		{CDDDFEE5-ED61-4097-ADA0-EBCFF6FF9165}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDDDFEE5-ED61-4097-ADA0-EBCFF6FF9165}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDDDFEE5-ED61-4097-ADA0-EBCFF6FF9165}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2245A98F-184D-432A-BF68-52986F05A368}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2245A98F-184D-432A-BF68-52986F05A368}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2245A98F-184D-432A-BF68-52986F05A368}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2245A98F-184D-432A-BF68-52986F05A368}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2245A98F-184D-432A-BF68-52986F05A368} = {96002619-4C0B-4591-B779-2196DCDCEB06}
 	EndGlobalSection
 EndGlobal
