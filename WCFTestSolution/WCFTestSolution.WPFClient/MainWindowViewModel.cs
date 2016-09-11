@@ -54,6 +54,7 @@ namespace Zza.Client
         }
 
         public DelegateCommand SubmitOrderCommand { get; private set; }
+
         public DelegateCommand<Product> AddOrderItemCommand { get; private set; }
 
         private void OnAddItem(Product product)
@@ -80,15 +81,59 @@ namespace Zza.Client
         {
             var proxy = new ZzaServiceClient("NetTcpBinding_IZzaService");
 
-            Products = await proxy.GetProductsAsync();
-            Customers = await proxy.GetCustomersAsync();
+            try
+            {
+                Products = await proxy.GetProductsAsync();
+                Customers = await proxy.GetCustomersAsync();
+            }
 
-            proxy.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show($"failed to load server data. Error: {ex.Message}");
+            }
+
+            finally
+            {
+                proxy.Close();
+            }
         }
 
         private void OnSubmitOrder()
         {
+            if (CustomerExists() && ThereIsOrders())
+            {
+                var proxy = new ZzaServiceClient("NetTcpBinding_IZzaService");
 
+                try
+                {
+                    proxy.SubmitOrder(_CurrentOrder);
+                    
+                    CurrentOrder = new Order();
+                    CurrentOrder.OrderDate = DateTime.Now;
+                    CurrentOrder.OrderStatusId = 1;
+                    Items = new ObservableCollection<OrderItemModel>();
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"failed to load server data. Error: {ex.Message}");
+                }
+
+                finally
+                {
+                    proxy.Close();
+                }
+            }
+        }
+
+        private bool ThereIsOrders()
+        {
+            return _CurrentOrder.OrderItems.Count > 0;
+        }
+
+        private bool CustomerExists()
+        {
+            return _CurrentOrder.CustomerId != Guid.Empty;
         }
     }
 }
